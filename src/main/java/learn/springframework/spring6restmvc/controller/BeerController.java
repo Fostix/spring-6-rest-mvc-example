@@ -17,7 +17,7 @@ import java.util.UUID;
 @RestController
 public class BeerController {
     public static final String BEER_PATH = "/api/v1/beer";
-    public static final String BEER_PATH_ID = "/{beerId}";
+    public static final String BEER_PATH_ID = BEER_PATH + "/{beerId}";
     private final BeerService beerService;
 
     @PatchMapping(BEER_PATH_ID)
@@ -56,7 +56,7 @@ public class BeerController {
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
-    @GetMapping(value = BEER_PATH_ID)
+    @GetMapping(value = BEER_PATH)
     public List<Beer> listBeers() {
         return beerService.listBeers();
     }
