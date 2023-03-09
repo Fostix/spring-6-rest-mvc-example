@@ -70,7 +70,6 @@ public class BeerServiceImpl implements BeerService {
         if (beer.getBeerStyle() != null)
             existing.setBeerStyle(beer.getBeerStyle());
 
-
         if (beer.getPrice() != null)
             existing.setPrice(beer.getPrice());
 
@@ -93,8 +92,6 @@ public class BeerServiceImpl implements BeerService {
         existing.setPrice(beer.getPrice());
         existing.setUpc(beer.getUpc());
         existing.setQuantityOnHand(beer.getQuantityOnHand());
-
-        beerMap.put(existing.getId(), existing);
     }
 
     @Override

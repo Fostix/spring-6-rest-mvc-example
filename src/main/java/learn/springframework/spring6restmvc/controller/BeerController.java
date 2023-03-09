@@ -21,7 +21,7 @@ public class BeerController {
     private final BeerService beerService;
 
     @PatchMapping(BEER_PATH_ID)
-    public ResponseEntity updateBeerPathById(@PathVariable("beerId") UUID bearId, @RequestBody Beer beer) {
+    public ResponseEntity updateBeerPatchById(@PathVariable("beerId") UUID bearId, @RequestBody Beer beer) {
 
         beerService.patchBeerById(bearId, beer);
 
@@ -51,7 +51,7 @@ public class BeerController {
         Beer savedBeer = beerService.saveNewBeer(beer);
 
         HttpHeaders headers = new HttpHeaders();
-        headers.add("Location", BEER_PATH + "/" + savedBeer.getId().toString());
+        headers.add("Location", BEER_PATH_ID + "/" + savedBeer.getId().toString());
 
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
@@ -64,7 +64,7 @@ public class BeerController {
     @GetMapping(value = BEER_PATH_ID)
     public Beer getBeerById(@PathVariable("beerId") UUID beerId) {
 
-        log.debug("Get Beer by Id - in controller - 1234");
+        log.debug("Get Beer by Id - in controller - 1234"); // not important only for log!
 
         return beerService.getBeerById(beerId);
     }
