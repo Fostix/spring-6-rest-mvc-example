@@ -54,14 +54,13 @@ public class CustomerController {
     }
 
     @GetMapping(value = CUSTOMER_PATH)
-    public List<Customer> listCustomers() {
+    public List<Customer> listAllCustomers() {
         return customerService.getAllCustomers();
     }
 
     @GetMapping(value = CUSTOMER_PATH_ID)
-    public Customer getCustomerById(@PathVariable("customerId")UUID customerId) {
-
-        return customerService.getCustomerById(customerId);
+    public Customer getCustomerById(@PathVariable("customerId") UUID customerId) {
+        return customerService.getCustomerById(customerId).orElseThrow(NotFoundException::new);
     }
 
 }
