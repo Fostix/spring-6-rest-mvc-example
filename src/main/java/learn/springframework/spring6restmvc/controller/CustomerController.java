@@ -53,6 +53,11 @@ public class CustomerController {
         return new ResponseEntity(headers, HttpStatus.CREATED);
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity handleNotFoundException() {
+        return ResponseEntity.notFound().build();
+    }
+
     @GetMapping(value = CUSTOMER_PATH)
     public List<Customer> listCustomers() {
         return customerService.getAllCustomers();
