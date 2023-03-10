@@ -1,6 +1,6 @@
 package learn.springframework.spring6restmvc.controller;
 
-import learn.springframework.spring6restmvc.model.Beer;
+import learn.springframework.spring6restmvc.model.BeerDTO;
 import learn.springframework.spring6restmvc.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class BeerController {
     private final BeerService beerService;
 
     @PatchMapping(BEER_PATH_ID)
-    public ResponseEntity updateBeerPatchById(@PathVariable("beerId") UUID bearId, @RequestBody Beer beer) {
+    public ResponseEntity updateBeerPatchById(@PathVariable("beerId") UUID bearId, @RequestBody BeerDTO beer) {
 
         beerService.patchBeerById(bearId, beer);
 
@@ -37,7 +37,7 @@ public class BeerController {
     }
 
     @PutMapping(BEER_PATH_ID)
-    public ResponseEntity updateById(@PathVariable("beerId") UUID bearId, @RequestBody Beer beer) {
+    public ResponseEntity updateById(@PathVariable("beerId") UUID bearId, @RequestBody BeerDTO beer) {
 
         beerService.updateBeerById(bearId, beer);
 
@@ -46,9 +46,9 @@ public class BeerController {
 
     @PostMapping(BEER_PATH)
 //    @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity handlePost(@RequestBody Beer beer) {
+    public ResponseEntity handlePost(@RequestBody BeerDTO beer) {
 
-        Beer savedBeer = beerService.saveNewBeer(beer);
+        BeerDTO savedBeer = beerService.saveNewBeer(beer);
 
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", BEER_PATH_ID + "/" + savedBeer.getId().toString());
@@ -57,12 +57,12 @@ public class BeerController {
     }
 
     @GetMapping(value = BEER_PATH)
-    public List<Beer> listBeers() {
+    public List<BeerDTO> listBeers() {
         return beerService.listBeers();
     }
 
     @GetMapping(value = BEER_PATH_ID)
-    public Beer getBeerById(@PathVariable("beerId") UUID beerId) {
+    public BeerDTO getBeerById(@PathVariable("beerId") UUID beerId) {
 
         log.debug("Get Beer by Id - in controller - 1234"); // not important only for log!
 

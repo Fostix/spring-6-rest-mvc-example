@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Beer {
+public class BeerDTO {
     private UUID id;
     private Integer version;
     private String beerName;
@@ -15,7 +15,7 @@ public class Beer {
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
 
-    Beer(UUID id, Integer version, String beerName, BeerStyle beerStyle, String upc, Integer quantityOnHand, BigDecimal price, LocalDateTime createDate, LocalDateTime updateDate) {
+    BeerDTO(UUID id, Integer version, String beerName, BeerStyle beerStyle, String upc, Integer quantityOnHand, BigDecimal price, LocalDateTime createDate, LocalDateTime updateDate) {
         this.id = id;
         this.version = version;
         this.beerName = beerName;
@@ -105,8 +105,8 @@ public class Beer {
 
     public boolean equals(final Object o) {
         if (o == this) return true;
-        if (!(o instanceof Beer)) return false;
-        final Beer other = (Beer) o;
+        if (!(o instanceof BeerDTO)) return false;
+        final BeerDTO other = (BeerDTO) o;
         if (!other.canEqual((Object) this)) return false;
         final Object this$id = this.getId();
         final Object other$id = other.getId();
@@ -142,7 +142,7 @@ public class Beer {
     }
 
     protected boolean canEqual(final Object other) {
-        return other instanceof Beer;
+        return other instanceof BeerDTO;
     }
 
     public int hashCode() {
@@ -232,8 +232,8 @@ public class Beer {
             return this;
         }
 
-        public Beer build() {
-            return new Beer(id, version, beerName, beerStyle, upc, quantityOnHand, price, createDate, updateDate);
+        public BeerDTO build() {
+            return new BeerDTO(id, version, beerName, beerStyle, upc, quantityOnHand, price, createDate, updateDate);
         }
 
         public String toString() {
