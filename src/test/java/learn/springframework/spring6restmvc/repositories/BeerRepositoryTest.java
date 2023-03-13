@@ -37,7 +37,7 @@ class BeerRepositoryTest {
                         .beerName("My Beer")
                         .beerStyle(BeerStyle.PALE_ALE)
                         .upc("6230948753240")
-                        .price(new BigDecimal(11.19))
+                        .price(new BigDecimal("11.19"))
                 .build());
 
         beerRepository.flush();
