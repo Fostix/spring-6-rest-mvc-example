@@ -27,8 +27,8 @@ public class BeerServiceImpl implements BeerService {
                 .upc("123456")
                 .price(new BigDecimal("12.99"))
                 .quantityOnHand(122)
-                .createDate(LocalDateTime.now())
-                .updateDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .build();
 
         BeerDTO beer2 = BeerDTO.builder()
@@ -39,8 +39,8 @@ public class BeerServiceImpl implements BeerService {
                 .upc("45253")
                 .price(new BigDecimal("15.99"))
                 .quantityOnHand(392)
-                .createDate(LocalDateTime.now())
-                .updateDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .build();
 
         BeerDTO beer3 = BeerDTO.builder()
@@ -51,8 +51,8 @@ public class BeerServiceImpl implements BeerService {
                 .upc("45253")
                 .price(new BigDecimal("11.99"))
                 .quantityOnHand(312)
-                .createDate(LocalDateTime.now())
-                .updateDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .build();
 
         beerMap.put(beer1.getId(), beer1);
@@ -118,8 +118,8 @@ public class BeerServiceImpl implements BeerService {
         BeerDTO savedBeer = BeerDTO.builder()
                 .id(UUID.randomUUID())
                 .version(1)
-                .createDate(LocalDateTime.now())
-                .updateDate(LocalDateTime.now())
+                .createdDate(LocalDateTime.now())
+                .updatedDate(LocalDateTime.now())
                 .beerName(beer.getBeerName())
                 .beerStyle(beer.getBeerStyle())
                 .quantityOnHand(beer.getQuantityOnHand())

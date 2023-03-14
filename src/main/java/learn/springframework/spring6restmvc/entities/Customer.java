@@ -9,9 +9,9 @@ import org.hibernate.type.SqlTypes;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Builder
 @Getter
 @Setter
+@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +29,8 @@ public class Customer {
     @Version
     private Integer version;
     private LocalDateTime createdDate;
-    private LocalDateTime updateDate;
-
+    private LocalDateTime updatedDate;
 }
+
+
+

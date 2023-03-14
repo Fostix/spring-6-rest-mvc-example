@@ -26,6 +26,6 @@ public class BeerDTO {
     private Integer quantityOnHand;
     @NotNull
     private BigDecimal price;
-    private LocalDateTime createDate;
-    private LocalDateTime updateDate;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
 }

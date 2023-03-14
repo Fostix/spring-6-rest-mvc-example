@@ -16,9 +16,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Builder
 @Getter
 @Setter
+@Builder
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -48,5 +48,5 @@ public class Beer {
     @CreationTimestamp
     private LocalDateTime createdDate;
     @UpdateTimestamp
-    private LocalDateTime updateDate;
+    private LocalDateTime updatedDate;
 }

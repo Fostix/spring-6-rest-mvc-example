@@ -1,14 +1,17 @@
 package learn.springframework.spring6restmvc.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import learn.springframework.spring6restmvc.bootstrap.BootstrapData;
 import learn.springframework.spring6restmvc.entities.Beer;
 import learn.springframework.spring6restmvc.mappers.BeerMapper;
 import learn.springframework.spring6restmvc.model.BeerDTO;
 import learn.springframework.spring6restmvc.repositories.BeerRepository;
+import learn.springframework.spring6restmvc.services.BeerCsvServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -58,7 +61,7 @@ class BeerControllerIT {
         mockMvc.perform(get(BeerController.BEER_PATH)
                 .queryParam("beerName", "IPA"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.size()", is(100)));
+                .andExpect(jsonPath("$.size()", is(30)));
     }
 
     @Test
