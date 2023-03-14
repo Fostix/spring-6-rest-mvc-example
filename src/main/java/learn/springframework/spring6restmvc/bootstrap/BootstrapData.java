@@ -67,6 +67,7 @@ public class BootstrapData implements CommandLineRunner {
     }
 
     private void loadBeerData() {
+        System.out.println(beerRepository.toString());
         if (beerRepository.count() == 0){
             Beer beer1 = Beer.builder()
                     .beerName("Galaxy Cat")
