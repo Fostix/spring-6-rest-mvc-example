@@ -1,6 +1,7 @@
 package learn.springframework.spring6restmvc.controller;
 
 import learn.springframework.spring6restmvc.model.BeerDTO;
+import learn.springframework.spring6restmvc.model.BeerStyle;
 import learn.springframework.spring6restmvc.services.BeerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -52,6 +53,7 @@ public class BeerController {
     @PostMapping(BEER_PATH)
 //    @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity handlePost(@Validated @RequestBody BeerDTO beer) {
+
         BeerDTO savedBeer = beerService.saveNewBeer(beer);
 
         HttpHeaders headers = new HttpHeaders();
@@ -61,14 +63,16 @@ public class BeerController {
     }
 
     @GetMapping(value = BEER_PATH)
-    public List<BeerDTO> listBeers(@RequestParam(required = false) String beerName) {
-        return beerService.listBeers(beerName);
+    public List<BeerDTO> listBeers(@RequestParam(required = false) String beerName,
+                                   @RequestParam(required = false) BeerStyle beerStyle,
+                                   @RequestParam(required = false) Boolean showInventory) {
+        return beerService.listBeers(beerName, beerStyle, showInventory);
     }
 
     @GetMapping(value = BEER_PATH_ID)
     public BeerDTO getBeerById(@PathVariable("beerId") UUID beerId) {
 
-        log.debug("Get Beer by Id - in controller - 1234"); // not important only for log!
+        log.debug("Get Beer by Id - in controller"); // not important only for log!
 
         return beerService.getBeerById(beerId).orElseThrow(NotFoundException::new);
     }
